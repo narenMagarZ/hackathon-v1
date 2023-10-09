@@ -62,10 +62,15 @@ navigator.geolocation.getCurrentPosition((data)=>{
 function climateInfo(climate){
      const {time,temperature,weather,winddirection,windspeed} = climate
      const climateWrapper = createDiv()
-     climateWrapper.innerText = "Climate"
-     addClass(climateWrapper,["fw-bold"])
+     const div = createDiv()
+     const p0 = createP()
+     p0.innerText = "Climate:"
+     addClass(p0,["fw-bold"])
+     div.append(p0)
+     div.append(climateWrapper)
+     addClass(climateWrapper,["p-2","pt-0"])
      const p1 = createP()
-     p1.innerText = "Temperature:"
+     p1.innerText = "Temperature: "
      const span1 = createSpan()
      span1.innerText = temperature
      p1.append(span1)
@@ -94,15 +99,25 @@ function climateInfo(climate){
      climateWrapper.append(p3)
      climateWrapper.append(p4)
      climateWrapper.append(p5)
-     return climateWrapper
+     addClass(span1,["text-success"])
+     addClass(span2,["text-success"])
+     addClass(span3,["text-success"])
+     addClass(span4,["text-success"])
+     addClass(span5,["text-success"])
+     return div
 }
 
 
 function soilInfo(soil){
      const {parentsoil,totalNitrogen,sand,ph,boron,clay,organicMatter} = soil
-     const climateWrapper = createDiv()
-     climateWrapper.innerText = "Soil"
-     addClass(climateWrapper,["fw-bold"])
+     const soilWrapper = createDiv()
+     const div = createDiv()
+     const p0 = createP()
+     p0.innerText = "Soil:"
+     addClass(p0,["fw-bold"])
+     div.append(p0)
+     div.append(soilWrapper)
+     addClass(soilWrapper,["p-2","pt-0"])
      const p1 = createP()
      p1.innerText = "Parent soil:"
      const span1 = createSpan()
@@ -134,21 +149,32 @@ function soilInfo(soil){
      span6.innerText = clay 
      p6.append(span6)
      const p7 = createP()
-     p5.innerText = "Organic matter: "
+     p7.innerText = "Organic matter: "
      const span7 = createSpan()
      span7.innerText = organicMatter 
      p7.append(span7)
-     climateWrapper.append(p1)
-     climateWrapper.append(p2)
-     climateWrapper.append(p3)
-     climateWrapper.append(p4)
-     climateWrapper.append(p5)
-     return climateWrapper
+     soilWrapper.append(p1)
+     soilWrapper.append(p2)
+     soilWrapper.append(p3)
+     soilWrapper.append(p4)
+     soilWrapper.append(p5)
+     soilWrapper.append(p6)
+     soilWrapper.append(p7)
+     addClass(span1,["text-success"])
+     addClass(span2,["text-success"])
+     addClass(span3,["text-success"])
+     addClass(span4,["text-success"])
+     addClass(span5,["text-success"])
+     addClass(span6,["text-success"])
+     addClass(span7,["text-success"])
+
+     return div
 }
 
 function suggestedCropsInfo(crops){
      const div = createDiv()
      div.innerText = "Suggested Crops"
+     addClass(div,["fw-bold"])
      const ul = createUl()
      crops.forEach(crop=>{
           const li = createLi()
