@@ -50,3 +50,43 @@ window.addEventListener("scroll", function() {
   }
 );
 
+/* suggestion list */
+const searchInput = document.getElementById('search_bar');
+const suggestionList = document.getElementById('suggestionList');
+
+// List of words to suggest from
+const words = [
+    'Bhojpur', 'Dhankuta', 'Ilam', 'Jhapa', 'Khotang', 'Morang', 'Okhaldhunga', 'Panchthar', 'Sankhuwasabha',
+    'Solukhumbu', 'Sunsari', 'Taplejung', 'Terhathum', 'Udayapur', 'Bara', 'Dhanusa', 'Mahottari', 'Parsa', 'Rautahat',
+    'Saptari', 'Sarlahi', 'Siraha', 'Bhaktapur', 'Chitwan', 'Dhading', 'Dolakha', 'Kathmandu', 'Kavrepalanchok',
+    'Lalitpur', 'Makwanpur', 'Nuwakot', 'Ramechhap', 'Rasuwa', 'Sindhuli', 'Sindhupalchok', 'Gorkha', 'Kaski', 'Lamjung',
+    'Manang', 'Mustang', 'Myagdi', 'Nawalparasi (Bardaghat Susta East)', 'Parbat', 'Syangja', 'Tanahu', 'Arghakhanchi',
+    'Banke', 'Bardiya', 'Dang', 'Eastern Rukum', 'Gulmi', 'Kapilvastu', 'Palpa', 'Pyuthan', 'Rolpa', 'Rupandehi', 'Dolpa',
+    'Humla', 'Jumla', 'Kalikot', 'Mugu', 'Salyan', 'Surkhet', 'Western Rukum', 'Achham', 'Baitadi', 'Bajhang', 'Bajura'
+  ];
+
+searchInput.addEventListener('input', function() {
+  const inputValue = this.value.toLowerCase();
+  suggestionList.innerHTML = '';
+
+  // Filter words based on the typed letters
+  const filteredWords = words.filter(word => word.toLowerCase().startsWith(inputValue));
+
+  // Display suggestions
+  if (filteredWords.length > 0) {
+    suggestionList.style.display = 'block';
+    filteredWords.forEach(word => {
+      const li = document.createElement('li');
+      li.textContent = word;
+      suggestionList.appendChild(li);
+
+      li.addEventListener('click', function() {
+        searchInput.value = this.textContent;
+        suggestionList.style.display = 'none';
+      });
+    });
+  } else if(filteredWords.length = 0)  {
+    suggestionList.style.display = 'none';
+  }
+});
+
