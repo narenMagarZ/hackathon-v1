@@ -1,0 +1,30 @@
+{
+  "name": "hackathon-v1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/narenMagarZ/hackathon-v1.git"
+  },
+  "keywords": [
+    "nodejs",
+    "mongodb",
+    "aws",
+    "openstreemap"
+  ],
+  "author": "naren magar <narenmagarz98@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/narenMagarZ/hackathon-v1/issues"
+  },
+  "homepage": "https://github.com/narenMagarZ/hackathon-v1#readme",
+  "dependencies": {
+    "dotenv": "^16.3.1",
+    "ejs": "^3.1.9",
+    "express": "^4.18.2"
+  }
+}
