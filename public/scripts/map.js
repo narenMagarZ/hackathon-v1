@@ -44,6 +44,7 @@ navigator.geolocation.getCurrentPosition((data)=>{
                     .openOn(map)
                     const soilDataCard = document.getElementById('soil-data-card')
                     if(soilDataCard){
+                         soilDataCard.innerHTML = ""
                          soilDataCard.append(climateInfo(climate))
                          soilDataCard.append(soilInfo(soilData))
                          soilDataCard.append(suggestedCropsInfo(suggestedCrops.crops))
