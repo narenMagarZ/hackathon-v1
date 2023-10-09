@@ -41,9 +41,9 @@ a:hover{
 }
 
 header{
-    margin-top: 10px;
     position: sticky;
-    top: 10px;
+    top: 2px;
+    margin-bottom: 15px;
     padding: 0 4rem;
     z-index: 1001;
 }
@@ -61,7 +61,7 @@ header{
 .links{
     background-color: aquamarine;
 }
-.navbar .links {
+.navbar{
     display: flex;
     gap: 2rem;
     font-size: 16px;
@@ -70,20 +70,43 @@ header{
     text-decoration: none solid rgba(0,0,0);
     word-spacing:0;
     height: 48px;
-    width: 600px;
+    width: 800px;
     padding: 0 16px;
-    display: flex;
+    /* display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-around; */
     background-color: #86be6c;
-    border-radius:10px;
+    border-radius:5px;
     box-shadow:rgba(0, 0, 0, 0) 0px 0px 0px 0px,
                rgba(0, 0, 0, 0) 0px 0px 0px 0px,
                rgba(0, 0, 0, 0.1) 0px 20px 25px -5px,
                rgba(0, 0, 0, 0.1) 0px 8px 10px -6px;
     
 }
-
+.links{
+    display: flex;
+    gap:7rem;
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 600;
+    text-decoration: none solid rgba(0,0,0);
+    word-spacing:0;
+    height: 48px;
+    width: 800px;
+    padding: 0 16px;
+    display: flex;
+    align-items: center;
+    justify-content:left;
+    background-color: #86be6c;
+}
+.corner{
+    position: absolute;
+    right: 0;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 0 2rem 0 2rem;
+}
 /* End header here */
 
 .map_container{
@@ -127,7 +150,7 @@ header{
   }
   /* end of notification panel */
 .Container_for_datacard{
-    margin-top: 10px;
+    margin-top: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -135,8 +158,8 @@ header{
     text-align: justify;
     min-height: 150px;
     width: 50%;
-    background-color:#caf7de ;
-    border: 2px solid #a7d3be;
+    background-color:rgba(134, 190, 108, 0.1);
+    border: 2px solid rgba(134, 190, 108, 0.2);
     border-radius: 5px;
 }
 .Data_card{
@@ -165,7 +188,7 @@ header{
   position: relative;
    height: 150px;
    width: 190px;
-   background-color: rgba(116, 208, 194,0.3);
+   background-color: rgba(134, 190, 108, 0.5);
    text-align: center;
    
  }
@@ -197,24 +220,27 @@ header{
  .short_about{
     height: 75vh;
     display: flex;
-    align-items: left;
+    align-items:left;
     flex-direction: column;
     justify-content: center;
+    margin-left: 10rem;
+    
  }
 
  .short_about h1 {
-    font-size: 5rem;
+    line-height: 2.5rem;
+    font-size: 3rem;
  }
  .short_about h2 {
-    font-size: 4rem;
+    font-size: 1.3rem;
  }
 
  .short_about p {
-    font-size: 1.5rem;
+    font-size: 1rem;
  }
  .illustration1{
-    height: 450px;
-    width: 500px;
+    height: 500px;
+    width: 550px;
     background-image:url("../images/illu1.png");
     background-repeat:no-repeat ;
     background-position: center;
@@ -226,25 +252,27 @@ header{
  footer {
     background-color: var(--mainClr);
     padding-block-start: 100px;
+    border-radius:5px 5px 0 0 ;
   
     & .container {
       display: grid;
-      /*         grid-template-columns: repeat(auto-fill, minmax(min(240px, 100%), 1fr)); */
       grid-template-columns: 2fr 1fr 1fr 1fr;
       gap: 30px;
       padding-inline: 15px;
+      
     }
   }
   
   .container {
     width: min(1170px, 100%);
     margin-inline: auto;
+   
   }
   
   .footer__block {
     display: flex;
     flex-direction: column;
-    gap: 30px;
+    gap: 10px;
   }
   
   h3.footer__title {
@@ -359,3 +387,47 @@ header{
       font-size: 13px;
     }
   }
+
+  .logo{
+    width: 6rem;
+  }
+
+  /* search bar */
+  input#search-bar{
+    position: absolute;
+    top: 6px;
+    height: 35px;
+    padding: 0 95px;
+    font-size: .8rem;
+    border: 1px solid #D0CFCE;
+    border-radius: 3px;
+    opacity: 0.7;
+    outline: none;
+    &:focus{
+      border: 1px solid #88b384;
+      transition: 0.35s ease;
+      color: #2f6035;
+      &::-webkit-input-placeholder{
+        transition: opacity 0.45s ease; 
+          opacity: 0;
+       }
+      &::-moz-placeholder {
+        transition: opacity 0.45s ease; 
+          opacity: 0;
+       }
+      &:-ms-placeholder {
+       transition: opacity 0.45s ease; 
+         opacity: 0;
+       }    
+     }
+   }
+  
+  .search-icon{
+   /*  background-color: black; */
+    float: right;
+    width: 55px;
+    height: 55px;
+    top: -62px;
+    right: -45px;
+  }
+  
