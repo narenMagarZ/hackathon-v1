@@ -1,0 +1,118 @@
+:root{
+    --clr-primary: #0F0F0F;
+    --clr-secondary: #FCFCFC; 
+    --clr-third: #def6e5;
+}
+
+*,
+*::before,
+*::after {
+box-sizing: border-box;
+margin: 0;
+padding: 0;
+}
+body{
+    background-color:#e7eae8;
+    font-family: var(--primary-font);
+    display: flex;
+    justify-content:center ;
+    flex-direction: column;
+    align-items:center;
+}
+
+li{
+    list-style: none;
+}
+a{
+    text-decoration: none;
+    color: var(--clr-secondary) ;
+    font-size: 1rem;
+}
+a:hover{
+    color: var(--clr-third);
+}
+
+header{
+    margin-top: 10px;
+    position: sticky;
+    top: 10px;
+    padding: 0 4rem;
+}
+.navbar{
+    width: 100%;
+    height: 60px;
+    max-width: 1200px;
+    width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.links{
+    background-color: aquamarine;
+}
+.navbar .links {
+    display: flex;
+    gap: 2rem;
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 600;
+    text-decoration: none solid rgba(0,0,0);
+    word-spacing:0;
+    height: 48px;
+    width: 600px;
+    padding: 0 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background-color: #70ab55;
+    border-radius:10px;
+    box-shadow:rgba(0, 0, 0, 0) 0px 0px 0px 0px,
+               rgba(0, 0, 0, 0) 0px 0px 0px 0px,
+               rgba(0, 0, 0, 0.1) 0px 20px 25px -5px,
+               rgba(0, 0, 0, 0.1) 0px 8px 10px -6px;
+    
+}
+
+/* End header here */
+
+.map_container{
+  width: 800px;
+  height: 500px;
+  background-color: beige;
+  border-radius: 10px;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.1);
+  overflow: hidden;
+}
+
+.notification_panel {
+    font-weight: 700;
+    color: white;
+    position: absolute;
+    z-index: 500;
+    height: 600px;
+    width: 350px;
+    right: 0;
+    top: 70px;
+    background-color: rgba(0, 0, 0, 0.1);
+    border-top-left-radius: 5px;
+    filter: drop-shadow(0px 20px 10px rgba(0, 0, 0, 0.5)); /* Corrected shadow */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  
+    &:before {
+      display: block;
+      content: "";
+      position: absolute;
+      top: 10em;
+      height: calc(100% - 20em);
+      width: calc(100% - 20em);
+      border-top: 2px solid rgba(225, 225, 225, 0.2);
+      border-left: 1px solid rgba(225, 225, 225, 0.1);
+      border-right: 1px solid rgba(225, 225, 225, 0.3);
+      z-index: 2;
+    }
+  }
+
+  
