@@ -1,10 +1,10 @@
 import express from 'express'
-import {getSoilData} from '../controller/index.js'
-import {appError} from '../utils/index.js'
+import {getCropProcedure, getSoilData} from '../controller/index.js'
 const apiRouter = express.Router()
 
 
 
 apiRouter.get('/soildata',getSoilData)
 
+apiRouter.get('/procedure',getCropProcedure)
 export default apiRouter
