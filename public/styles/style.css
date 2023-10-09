@@ -19,7 +19,7 @@ body{
     flex-direction: column;
     align-items:center;
     overflow-x:hidden;
-    background-image: url("../images/bg.jpg");
+    background-image: linear-gradient(to top, #d2f1e7, #b9ddf1);
     background-repeat: no-repeat;
     background-size: cover;
     font-family: Avantgarde, TeX Gyre Adventor, URW Gothic L, sans-serif;
