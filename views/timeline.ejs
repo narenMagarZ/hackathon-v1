@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Timeline</title>
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+     <style>
+          .w-800px{
+               width:800px
+          }
+          .fs-10{
+               font-size: 0.8rem;
+          }
+          .side-menu-bar-option{
+               text-decoration: none;
+               color:#000000;
+          }
+          .side-menu-bar-option:hover{
+               text-decoration: underline;
+               color:#198754;
+          }
+     </style>
+</head>
+
+<body class="d-flex justify-content-center p-4 ">
+     <div class="d-flex justify-content-center w-800px  gap-3 ">
+          <%- include("partials/side-menu-bar") %>
+          <div class="border p-4 py-2 rounded d-flex flex-column ali">
+               <h5 class="fw-bold">Timeline for <%= data.crop %></h5>
+               <div class="p-2 d-flex gap-2 flex-lg-row flex-column">
+                    <% data.timeline.forEach(action=>{ %>
+                         <div class="border rounded p-2 bg-light text-center">
+                              <% if(action.status==="pass") {%> 
+                                   <p class="lh-sm m-0">
+                                        <i class="bi bi-check2-circle text-success"></i>
+                                        <span class="fw-bold fs-6 text-success">
+                                             <%= action.value %>
+                                        </span>
+                                   </p>
+                              <%} else {%>
+                              <p class="lh-sm m-0">
+                                   <span class="fw-bold fs-6 text-warning">
+                                        <%= action.value %>
+                                   </span>
+                              </p>
+                              <%} %>
+
+                              <p class="fs-10 fw-bold text-secondary lh-sm m-0 mt-1">
+                                   <span>
+                                        <%= action.title %>
+                                   </span>
+                              </p>
+                         </div>
+                    <% }) %>
+               </div>
+               <div class="w-100  text-center my-4">
+                    <button class="rounded px-4 py-2 border-0 bg-success text-white ">Add more crops to yield</button>
+               </div>
+          </div>
+     </div>
+</body>
+</html>
