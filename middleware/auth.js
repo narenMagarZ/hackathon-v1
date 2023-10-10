@@ -6,7 +6,6 @@ async function auth(req,res,next){
      try{
           const {token} = req.signedCookies
           const jwtPayload = verifyJwt(token)
-          console.log(jwtPayload)
           const {id} = jwtPayload
           const user = await new UserService().getUser(id)
           if(user){
