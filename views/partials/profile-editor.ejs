@@ -1,0 +1,70 @@
+<div
+id="profile-edit-form-modal"
+class="overlay-modal hidden">
+     <form id="profile-edit-form" class="border w-500px bg-light rounded p-4">
+          <h5>Edit profile</h5>
+          <div  class="d-flex flex-column mb-2">
+               <label>FirstName</label>
+               <input id="firstname" class="p-1" value="<%= user.firstName %>" />
+          </div>
+          <div class="d-flex flex-column mb-2">
+               <label>LastName</label>
+               <input id="lastname" class="p-1" value="<%= user.lastName %>" />
+          </div>  
+          <div class="d-flex flex-column mb-2">
+               <label>Email</label>
+               <input id="email" class="p-1" value="<%= user.email %>" />
+          </div>    
+          <div class="d-flex flex-column mb-2">
+               <label>Phone Number</label>
+               <input id="phone-number" class="p-1" value="<%= user.phoneNumber %>" />
+          </div>    
+          <div class="d-flex flex-column mb-4">
+               <label>Province</label>
+               <input id="province" class="p-1" value="<%= user.province %>" />
+          </div>     
+
+          <div class="text-end">
+               <button 
+               type="button"
+               id="form-discard"
+               class="bg-secondary rounded text-white border-0 px-4 py-1">Discard</button>
+               <button class="bg-success text-white border-0 px-4 py-1 rounded">Edit</button>
+          </div>
+     </form>
+</div>
+<script>
+     const profileEditForm = document.getElementById("profile-edit-form")
+     const formDiscardBtn = document.getElementById('form-discard')
+     formDiscardBtn.onclick = ()=>{
+          const profileEditFormModal = document.getElementById('profile-edit-form-modal')
+          console.log(profileEditFormModal)
+          profileEditFormModal.classList.toggle('hidden')
+     }
+     if(profileEditForm){
+          profileEditForm.addEventListener('submit',(e)=>{
+               e.preventDefault()
+               const firstName = document.getElementById('firstname')
+               const lastName = document.getElementById('lastname')
+               const email = document.getElementById('email')
+               const phoneNumber = document.getElementById('phone-number')
+               const province = document.getElementById('province')
+               fetch('http://localhost:5000/api/profile',{
+                    method:'PUT',
+                    headers:{
+                         'Content-Type':"application/json"
+                    },
+                    body:JSON.stringify({
+                         firstName:firstName.value,
+                         lastName:lastName.value,
+                         email:email.value,
+                         phoneNumber:phoneNumber.value,
+                         province:province.value
+                    })
+               }).then(res=>{
+               }).catch(err=>{
+                    console.error(err)
+               })
+          })
+     }
+</script>
