@@ -47,7 +47,7 @@ navigator.geolocation.getCurrentPosition((data)=>{
                          soilDataCard.innerHTML = ""
                          soilDataCard.append(climateInfo(climate))
                          soilDataCard.append(soilInfo(soilData))
-                         soilDataCard.append(suggestedCropsInfo(suggestedCrops.crops))
+                         // soilDataCard.append(suggestedCropsInfo(suggestedCrops.crops))
                     }
                }).catch(err=>{
                     console.error(err)
@@ -65,11 +65,11 @@ function climateInfo(climate){
      const climateWrapper = createDiv()
      const div = createDiv()
      const p0 = createP()
-     p0.innerText = "Climate:"
+     p0.innerText = "Climate"
      addClass(p0,["fw-bold"])
      div.append(p0)
      div.append(climateWrapper)
-     addClass(climateWrapper,["p-2","pt-0"])
+     addClass(climateWrapper,["p-0","pt-0","text-secondary"])
      const p1 = createP()
      p1.innerText = "Temperature: "
      const span1 = createSpan()
@@ -114,11 +114,11 @@ function soilInfo(soil){
      const soilWrapper = createDiv()
      const div = createDiv()
      const p0 = createP()
-     p0.innerText = "Soil:"
+     p0.innerText = "Soil"
      addClass(p0,["fw-bold"])
      div.append(p0)
      div.append(soilWrapper)
-     addClass(soilWrapper,["p-2","pt-0"])
+     addClass(soilWrapper,["p-0","pt-0","text-secondary"])
      const p1 = createP()
      p1.innerText = "Parent soil:"
      const span1 = createSpan()
