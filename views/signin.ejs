@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>SoilSmart Signin</title>
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+</head>
+<body class="d-flex justify-content-center p-4">
+     <form id="signin-form" class="border p-4 rounded"> 
+          <h5 class="text-center">SoilSmart Signin</h5>
+          <div class="d-flex flex-column mb-2">
+               <label>Phone Number</label>
+               <input id="phone-number"  class="rounded p-1"/>
+          </div>    
+          <div class="d-flex flex-column mb-4">
+               <label>Password</label>
+               <input type="password" id="password" class="rounded p-1" />
+          </div>
+          <div class="mb-2 text-center">
+               <button class="rounded border-0 px-4 text-white bg-success py-2">Signin</button>
+          </div>
+          <div>
+               <p>Don't have an account?
+                    <a href="/signup">Signup</a>
+               </p>
+          </div>
+     </form>
+</body>
+<script>
+     const cropField = document.getElementById('crop')
+     if(cropField){
+     const submitBtn = document.getElementById('submit')
+     submitBtn.addEventListener('click',()=>{
+          fetch('http://localhost:5000/api/yieldcrop',{
+               method:"POST",
+               headers:{
+                    'Content-Type':"application/json"
+               },
+               body:JSON.stringify({
+                    crop:cropField.value
+               })
+          }).then(async res=>{
+          })
+     })
+     }
+     const signinForm = document.getElementById("signin-form")
+     if(signinForm){
+          signinForm.addEventListener('submit',(e)=>{
+               e.preventDefault()
+               const phoneNumber = document.getElementById('phone-number')
+               const password = document.getElementById('password')
+               fetch('http://localhost:5000/api/auth/signin',{
+                    method:'POST',
+                    headers:{
+                         'Content-Type':"application/json"
+                    },
+                    body:JSON.stringify({
+                         phoneNumber:phoneNumber.value,
+                         password:password.value,
+                    })
+               }).then(res=>{
+               }).catch(err=>{
+                    console.error(err)
+               })
+          })
+     }
+</script>
+</html>
