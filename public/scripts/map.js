@@ -8,7 +8,17 @@ navigator.geolocation.getCurrentPosition((data)=>{
      const zoom = 6
      const map = L.map('map').setView([lat,lng],zoom)
      // needs to fetch geojson data 
+     const search_button = document.getElementById("search-btn")
+     const searchField = document.getElementById('search_bar')
 
+     search_button.addEventListener('click',()=>{
+          console.log(searchField.dataset)
+          const dataset = searchField.dataset
+          const coord = JSON.parse(dataset.id)
+          const marker = L.marker([coord.latitude,coord.longitude]).addTo(map)
+          map.setView(marker.getLatLng(), 8)
+     })
+     
           L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'})
           .addTo(map);
           fetch('http://localhost:5000/map/map.geojson')

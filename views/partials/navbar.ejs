@@ -32,10 +32,7 @@
 
     const searchBtn = document.getElementById('search-btn')
     const searchField = document.getElementById('search_bar')
-    if(searchBtn && searchField){
-        searchBtn.addEventListener('click',()=>{
-          const key = searchField.value
-        const coordinates = {
+    const coordinates = {
           kathmandu: { latitude: 27.66401336166235, longitude: 85.30184671282768 },
           lalitpur: { latitude: 27.644550767135147, longitude: 85.10409280657768 },
           bhaktapur: { latitude: 27.508215721584662, longitude: 85.34579202532768 },
@@ -43,6 +40,22 @@
           chitwan: { latitude: 27.741829073171214, longitude: 84.10533539950849},
           surkhet: { latitude: 28.57481896943927, longitude: 81.62242524325849 }
         };
+
+    if(searchBtn && searchField){
+
+        searchField.addEventListener('change',(e)=>{
+            const value = e.target.value
+            if(coordinates[value]){
+                e.target.setAttribute('data-id',JSON.stringify(coordinates[value]))
+            }
+
+        })
+        searchBtn.addEventListener('click',()=>{
+            console.log(L)
+
+          const key = searchField.value
+
+
         fetch(`http://localhost:5000/api/soildata?lat=${coordinates[key].latitude}&lng=${coordinates[key].longitude}`).then(async res=>{
           const data = await res.json()
           const {suggestedCrops,climate,soilData} = data

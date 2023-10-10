@@ -18,7 +18,7 @@ function createCropCard(crop){
           "tomatoes"
      ]
      const img = document.createElement("img");
-     img.src =  imagesAvailable.includes(crop) ? `/images/${crop}.png` : 'images/default.png' ;
+     img.src =  imagesAvailable.includes(crop.toLowerCase()) ? `/images/${crop.toLowerCase()}.png` : 'images/default.png' ;
      img.alt = "";
      img.classList.add("w-100");
 
