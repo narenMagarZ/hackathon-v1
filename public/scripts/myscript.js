@@ -1,14 +1,16 @@
 
-
+let notificationPanel = document.getElementById("notification_panel");
+var isNotificationbarHidden = true;
 document.getElementById("toggleButton").addEventListener("click", function() {
-    var notificationPanel = document.getElementById("notification_panel");
-    if (notificationPanel.classList.contains("hidden")) {
-        notificationPanel.classList.remove("hidden");
-        notificationPanel.style.right = "0"; 
-    } else {
-        notificationPanel.classList.add("hidden");
-        notificationPanel.style.right = "-350px"; 
-    }
+
+  if (isNotificationbarHidden) {
+    notificationPanel.classList.remove("hidden");
+    notificationPanel.style.right = "0"; 
+    isNotificationbarHidden = false; 
+} else {
+    notificationPanel.classList.add("hidden");
+    notificationPanel.style.right = "-350px"; 
+    isNotificationbarHidden = true; }
 });
 
 /* for nav animation */
@@ -29,20 +31,17 @@ window.addEventListener("scroll", function() {
     if (currentScrollPos > intermediateContainer.offsetTop) {
       if (!isNavbarHidden) {
         navbar.style.transform = 'scale(0)';
-        dropDownMenu.style.transform = 'scale(0)';
         isNavbarHidden = true;
       }
     } else {
       if (isNavbarHidden) {
         navbar.style.transform = 'scale(1)';
-        dropDownMenu.style.transform = 'scale(1)';
         isNavbarHidden = false;
       }
     }
   
     if (currentScrollPos < prevScrollPos) {
       navbar.style.transform = 'scale(1)';
-      dropDownMenu.style.transform = 'scale(1)';
       isNavbarHidden = false;
     }
   
@@ -104,7 +103,17 @@ const words = [
     suggestionList.style.display = 'none';
   }
 
-
+  /*  Hover effect */
+  const elementToHoverOver = document.querySelector(".card");
+  const elementToActivateHover = document.querySelectorAll(".Nameadress");
+  
+  elementToActivateHover.addEventListener("mouseenter", () => {
+    elementToActivateHover.style.bottom = "0px";
+  });
+  
+  elementToActivateHover.addEventListener("mouseleave", () => {
+    elementToActivateHover.style.bottom = "-30px";
+  });
 
 
 

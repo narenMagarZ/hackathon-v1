@@ -120,7 +120,7 @@ header{
 
 #notification_panel {
     font-weight: 700;
-    color: white;
+    color: rgba(0, 0, 0, .8);
     position: absolute;
     z-index: 500;
     height: 600px;
@@ -129,7 +129,7 @@ header{
     top: 70px;
     background-color: rgba(54, 99, 59, 0.1);
     border-top-left-radius: 5px;
-    filter: drop-shadow(0px 10px 5px rgba(83, 82, 82, 0.5));
+   /*  filter: drop-shadow(0px 5px 2px rgba(83, 82, 82, 0.2)); */
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -178,7 +178,7 @@ header{
  .crops_details{
     margin-top: 20px;
     height: calc(100vh *0.4);
-    color: WHITE;
+    /* color: rgb(69, 69, 69); */
     text-align: center;
  }
  .crop_cont_container{
@@ -462,4 +462,80 @@ header{
   .suggestions li:hover {
     background-color: #f2f2f2;
   }
-  
+  .experts_title{
+    font-size: 1.3rem;
+  }
+  .connect_experts{
+    position: relative;
+    padding: 0 3rem;
+    height: 45vh;
+    min-width: 705px;
+    width: 80%;
+    background-color:rgba(134, 190, 108,1);
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    justify-items: center;
+    align-items: center;
+    margin-bottom: 2rem;
+  }
+  .card{
+    
+    height:250px ;
+    width: 200px;
+    max-height:300px ;
+    max-width: 250px;
+    background-color: white;
+    border-radius: 10px 0 10px 0;
+    overflow: hidden;
+    opacity: 0.9;
+    transition: filter 0.3s ease-in-out;
+  }
+  .card:nth-child(2) {
+background-image: url(../images/expert1.png);
+background-size: cover;
+  }
+  .card:nth-child(3) {
+    background-image: url(../images/expert2.png);
+    background-size: cover;
+      }
+      .card:nth-child(4) {
+        background-image: url(../images/expert3.png);
+        background-size: cover;
+          }
+.card:hover{
+  filter: brightness(110%);
+  opacity: 1;
+
+}
+.Nameadress {
+  position: absolute;
+  bottom: 0px;
+  color: #e7eae8;
+  font-size: 1.1rem;
+  transition: bottom 0.3s ease-in-out;
+}
+
+.Nameadress:hover {
+  bottom: 0;
+}
+.contactbtn{
+ border-radius: 3px;
+ padding: 2px;
+ font-size:.8rem ;
+ outline: none;
+ border: none;
+ transition: 0.3s ease-in-out;
+ margin-left: 3px;
+ margin-bottom: 3px;
+}
+.contactbtn:hover{
+  background-color: #D0CFCE;
+}
+.premium{
+  position: absolute;
+  color: gold;
+  top: 0;
+  left: 10px;
+}
