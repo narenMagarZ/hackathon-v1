@@ -13,7 +13,7 @@ margin: 0;
 padding: 0;
 }
 body{
-    background-color:#e7eae8;
+    padding: 10px;
     font-family: var(--primary-font);
     display: flex;
     justify-content:center ;
@@ -21,9 +21,6 @@ body{
     align-items:center;
     overflow-x:hidden;
     background-color: white;
-    /* background-image: linear-gradient(to bottom, #eefffe 0%, #bffdea 100%); */
-    background-repeat: no-repeat;
-    background-size: cover;
     font-family: Avantgarde, TeX Gyre Adventor, URW Gothic L, sans-serif;
     
 }
@@ -57,32 +54,19 @@ header{
     align-items: center;
     justify-content: space-around;
     transition: transform 0.4s ease;
-}
-.links{
-    background-color: aquamarine;
-}
-.navbar{
-    display: flex;
     gap: 2rem;
     font-size: 16px;
     line-height: 24px;
     font-weight: 600;
     text-decoration: none solid rgba(0,0,0);
     word-spacing:0;
-    height: 48px;
+    /* height: 48px; */
     width: 800px;
-    padding: 0 16px;
-    /* display: flex;
-    align-items: center;
-    justify-content: space-around; */
+    /* padding: 0 16px; */
     background-color: #86be6c;
-    border-radius:5px;
-    box-shadow:rgba(0, 0, 0, 0) 0px 0px 0px 0px,
-               rgba(0, 0, 0, 0) 0px 0px 0px 0px,
-               rgba(0, 0, 0, 0.1) 0px 20px 25px -5px,
-               rgba(0, 0, 0, 0.1) 0px 8px 10px -6px;
-    
+    border-radius: 4px;
 }
+
 .links{
     display: flex;
     gap:7rem;
@@ -94,9 +78,7 @@ header{
     height: 48px;
     width: 800px;
     padding: 0 16px;
-    display: flex;
     align-items: center;
-    justify-content:left;
     background-color: #86be6c;
 }
 .corner{
@@ -107,14 +89,12 @@ header{
     gap: 15px;
     padding: 0 2rem 0 2rem;
 }
-/* End header here */
 
 .map_container{
   width: 800px;
   height: 500px;
   background-color: beige;
-  border-radius: 10px 0 10px 0;
-  box-shadow: 0 3px 10px rgb(0 0 0 / 0.1);
+  border-radius: 4px;
   overflow: hidden;
 }
 
@@ -129,7 +109,6 @@ header{
     top: 70px;
     background-color: rgba(54, 99, 59, 0.1);
     border-top-left-radius: 5px;
-   /*  filter: drop-shadow(0px 5px 2px rgba(83, 82, 82, 0.2)); */
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -156,7 +135,6 @@ header{
     border: 2px solid rgba(106, 108, 106,0.4);
     border-radius: 3px;
   }
-  /* end of notification panel */
 .Container_for_datacard{
     margin-top: 20px;
     display: flex;
@@ -165,20 +143,23 @@ header{
     gap: 20px;
     text-align: justify;
     min-height: 150px;
-    width: 50%;
     background-color:rgba(134, 190, 108, 0.1);
     border: 2px solid rgba(134, 190, 108, 0.2);
     border-radius: 5px;
 }
 .Data_card{
     display: flex;
+    justify-content: center;
     text-align:start;
+    padding: 8px;
+    width: 800px;
 }
- /*------------------- Crops details ---------------------*/
+.Data_card > div{
+  margin: 0 10px ;
+}
  .crops_details{
     margin-top: 20px;
     height: calc(100vh *0.4);
-    /* color: rgb(69, 69, 69); */
     text-align: center;
  }
  .crop_cont_container{
@@ -209,7 +190,6 @@ header{
     transform: translateX(-50%);
  }
 
- /*------------- ABout section ----------------*/
  .footer_container{
     font-family: "Poppins", sans-serif;
     font-size: 14px;
@@ -258,7 +238,6 @@ header{
 
  }
 
- /*--------------------- footer---------------------- */
  footer {
     background-color: var(--mainClr);
     padding-block-start: 100px;
@@ -404,15 +383,15 @@ header{
 
   /* search bar */
   input#search_bar{
-    position: absolute;
-    top: 6px;
-    height: 35px;
-    padding: 0 95px;
+    /* position: absolute; */
+    /* top: 6px; */
+    /* height: 35px; */
+    /* padding: 0 95px; */
     font-size: .8rem;
-    border: 1px solid #D0CFCE;
-    border-radius: 3px;
-    opacity: 0.7;
-    outline: none;
+    /* border: 1px solid #D0CFCE; */
+    /* border-radius: 3px; */
+    /* opacity: 0.7; */
+    /* outline: none; */
     &:focus{
       border: 1px solid #88b384;
       transition: 0.35s ease;
@@ -441,10 +420,10 @@ header{
   }
 /* suggestion of district */
   .suggestions {
-    top:40px;
-    left: 300px;
+    top:50px;
+    left: 260px;
     height: 150px;
-    width: 287px;
+    width: 360px;
     position: absolute;
     overflow-y: hidden;
     background: rgba(134, 190, 108,0.5);
