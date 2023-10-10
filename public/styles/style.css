@@ -120,7 +120,7 @@ header{
 
 #notification_panel {
     font-weight: 700;
-    color: rgba(0, 0, 0, .8);
+    color: rgb(51, 56, 61);
     position: absolute;
     z-index: 500;
     height: 600px;
