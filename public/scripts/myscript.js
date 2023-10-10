@@ -68,11 +68,8 @@ const words = [
 searchInput.addEventListener('input', function() {
   const inputValue = this.value.toLowerCase();
   suggestionList.innerHTML = '';
-
-  // Filter words based on the typed letters
   const filteredWords = words.filter(word => word.toLowerCase().startsWith(inputValue));
 
-  // Display suggestions
   if (filteredWords.length > 0) {
     suggestionList.style.display = 'block';
     filteredWords.forEach(word => {
@@ -85,8 +82,16 @@ searchInput.addEventListener('input', function() {
         suggestionList.style.display = 'none';
       });
     });
-  } else if(filteredWords.length = 0)  {
+  } else if(filteredWords.length == 0)  {
     suggestionList.style.display = 'none';
   }
 });
+
+if ( searchInput !== document.activeElement ){
+  suggestionList.style.display = 'none';
+}
+
+
+
+
 
