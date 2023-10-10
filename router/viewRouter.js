@@ -22,14 +22,16 @@ viewRouter.get('/signin',(req,res)=>{
      res.render("signin.ejs")
 })
 
-viewRouter.get('/profile',auth,(req,res)=>{
+viewRouter.get('/profile',auth,async(req,res)=>{
+     const {id}= req.user
+     const rawUser = await new UserService().getUser(id)
      const user = {
-          firstName:"naren",
-          lastName:"magar",
-          province:"Karnali",
-          email:"nare@gmail.com",
-          phoneNumber:"9822406053",
-          path:req.path
+          firstName:rawUser.firstName,
+          lastName:rawUser.lastName,
+          province:rawUser.province,
+          email:rawUser.email,
+          phoneNumber:rawUser.phoneNumber,
+
      }
      res.render("profile.ejs",{user})
 })

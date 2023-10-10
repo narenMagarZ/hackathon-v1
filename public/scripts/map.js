@@ -1,7 +1,7 @@
 
 
 navigator.geolocation.getCurrentPosition((data)=>{
-     console.log(data)
+     
      const coords = data.coords
      const lat = coords.latitude
      const lng = coords.longitude

@@ -37,7 +37,7 @@ apiRouter.get('/suggestedcrops',async(req,res,next)=>{
           let isCached = true
           if(!suggestedCrops){
                isCached = false
-               suggestedCrops = await getSuggestedCrops(`Acts as a farmer, suggest a crops which are suitable to harvest for this ${soilData}.Response must be in a json format, include only name field of crops.Note:no need to mention introduction and conclusion only the name of crops`)
+               suggestedCrops = await getSuggestedCrops(`Acts as a farmer, suggest a crops which are suitable to harvest for this ${soilData}.Response must be in a json format, include only name field of crops like {name:"cropName"}.Note:no need to mention introduction and conclusion only the name of crops`)
                await redis.set(`suggested-crop:lat:${lat},lng:${lng}`,JSON.stringify(suggestedCrops))
           }
           console.log(suggestedCrops)
