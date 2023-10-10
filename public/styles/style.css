@@ -224,8 +224,10 @@ header{
     display: flex;
     align-items:center;
     justify-content: center;
+    max-width: 1019.2px;
  }
  .short_about{
+    padding: 0 0 0 2rem;
     height: 75vh;
     display: flex;
     align-items:left;
@@ -247,13 +249,13 @@ header{
     font-size: 1rem;
  }
  .illustration1{
-    height: 500px;
-    width: 550px;
+    height: 550px;
+    width: 600px;
     background-image:url("../images/illu1.png");
     background-repeat:no-repeat ;
     background-position: center;
     background-size: contain;
-    right:-100px;
+
  }
 
  /*--------------------- footer---------------------- */
