@@ -3,8 +3,22 @@ function createCropCard(crop){
      containerDiv.classList.add("border", "rounded", "p-2", "bg-light");
      containerDiv.style.width = "180px";
 
+     const imagesAvailable = [
+          "barley",
+          "cabbage",
+          "carrots",
+          "corn",
+          "paddy",
+          "potatotoes",
+          "rice",
+          "soyabeans",
+          "sugarbeats",
+          "sunflowers",
+          "wheat",
+          "tomatoes"
+     ]
      const img = document.createElement("img");
-     img.src = "/images/apple1.png";
+     img.src =  imagesAvailable.includes(crop) ? `/images/${crop}.png` : 'images/default.png' ;
      img.alt = "";
      img.classList.add("w-100");
 
@@ -36,11 +50,28 @@ function createCropCard(crop){
      procedureButton.classList.add("fs-nsm", "border-0", "text-white", "bg-secondary", "rounded", "px-2", "py-1");
      procedureButton.textContent = "Procedure";
 
+     procedureButton.addEventListener('click',()=>{
+          window.location.href = `/procedure?crop=${crop}`
+     })
      const trackButton = document.createElement("button");
      trackButton.classList.add("fs-nsm", "border-0", "text-white", "bg-success", "rounded", "px-2", "py-1");
-     trackButton.dataset.id = "23u89348793298";
      trackButton.textContent = "Track";
 
+     
+     trackButton.addEventListener('click',()=>{
+          fetch(`http://localhost:5000/api/yieldcrop`,{
+               method:"POST",
+               headers:{
+                    'Content-Type':'application/json'
+               },
+               body:JSON.stringify({crop})
+          }).then(async res=>{
+               const data = await res.json()
+               console.log(data)
+          }).catch(err=>{
+               console.error(err)
+          })
+     })
      containerDiv.appendChild(img);
      containerDiv.appendChild(nameParagraph);
      containerDiv.appendChild(priceParagraph);
