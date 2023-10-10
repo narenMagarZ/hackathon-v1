@@ -1,6 +1,13 @@
 import express from 'express'
 import auth from '../middleware/auth.js'
 import UserService from '../services/user-service.js'
+import redis from '../config/redis.js'
+import axios from 'axios'
+import {
+     getClimate,
+     getWeatherFromCode,
+     getSuggestedCrops
+} from '../utils/index.js'
 const viewRouter = express.Router()
 
 
@@ -46,6 +53,7 @@ viewRouter.get('/yield',auth,async (req,res)=>{
 viewRouter.get('/yield/timeline',auth,async (req,res)=>{
      const {id}=req.user
      const {crop} = req.query
+     console.log(req.query)
      try{
           const yieldCropsDetail = await new UserService().getYieldCropsInDetail(id,crop)
           const harvestTimeline = []
@@ -71,6 +79,10 @@ viewRouter.get('/yield/timeline',auth,async (req,res)=>{
 
 })
 
+viewRouter.get('/procedure',(req,res)=>{
+     const {crop} = req.query
+     return res.render("procedure.ejs",{crop})
+})
 
 const extractDate =(date)=>{
      const date1 = new Date(date)

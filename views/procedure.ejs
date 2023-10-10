@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Harvest</title>
+     <script async defer src="/scripts/harvest.js" ></script>
+     <link rel="stylesheet" type="text/css" href="/styles/style.css">
+     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+</head>
+<body class="">
+     <%- include("partials/navbar") %>
+     <div class="w-100 p-4 d-flex justify-content-center align-items-center">
+          <div class="max-w-800px rounded w-800px border p-2">
+               <h5 class="fw-bold text-center">Steps to grow <%= crop %>?</h5>
+               <div id="crop-harvest-step-container" class="d-flex flex-column align-items-center">
+               </div>
+               </div>
+          </div>
+     </div>
+</body>
+<script>
+     function fetchHarvestProcedure(crop){
+     fetch(`http://localhost:5000/api/procedure?crop=${crop}`,{cache:'force-cache'})
+     .then(async res=>{
+          const data = await res.json()
+          console.log(data)
+          drawStep(data.procedure)
+     }).catch(err=>{
+          console.error(err)
+     })
+}
+const url = new URL(window.location)
+fetchHarvestProcedure(url.search.split('=')[1])
+function drawStep({steps}){
+     const parent = document.getElementById("crop-harvest-step-container")
+     console.log(steps)
+     steps.forEach((step,i) => {
+          const{title,description} = step
+          const div = createDiv()
+          const p = createP()
+          const h5 = createH5()
+          addClass(["border","rounded","p-2","m-2","w-50"],div)
+          addClass(["fw-bold","fs-6","text-success","text-center"],h5)
+          h5.innerText = title
+          p.innerText = description
+          addClass(["text-center"],p)
+          div.append(h5)
+          div.append(p)
+          addToDom(parent,div)
+          if(i+1 < steps.length){
+               const arrow = createArrow()
+               addClass(["h-50px","border"],arrow)
+               addToDom(parent,arrow)
+          }
+     });
+}
+
+const addToDom = (parent,child)=>parent.append(child)
+const createDiv =()=>document.createElement('div')
+const createP = ()=>document.createElement('p')
+const createH5 = ()=>document.createElement('h5')
+const createArrow=()=>document.createElement('div')
+
+const addClass = (styleClass,elem)=>{
+     elem.classList.add(...styleClass)
+}
+
+</script>
+</html>

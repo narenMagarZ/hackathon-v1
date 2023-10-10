@@ -4,7 +4,10 @@
      <meta charset="UTF-8">
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
      <title>SoilSmart</title>
+     <script src="/scripts/fetch-recommended-crops.js" type="module"></script>
      <script src="/scripts/map.js" async defer></script>
+     <script src="/scripts/myscript.js" async defer></script>
+     <link rel="stylesheet" type="text/css" href="/styles/global.css">
      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
      <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
      <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin="" async defer></script>
@@ -17,12 +20,37 @@
           p{
                margin: 0;
           }
+          .w-800px{
+               width: 800px;
+          }
+          .w-200px{
+               width: 220px;
+          }
+          .fs-10{
+               font-size: 0.8rem;
+          }
+          .fs-nsm{
+     font-size: 0.8rem;
+}
+.fs-nxs{
+     font-size: 0.6rem;
+}
      </style>
 </head>
 <body>
      <%- include("partials/navbar") %>
     <div class="map_container"><div id="map"></div></div> 
-    <%- include("partials/soil-data-card") %>
+    <div class="Container_for_datacard">
+     <div class="Data_card" id="soil-data-card"></div>
+     </div>
+    <div class="my-4 w-800px ">
+         <h5 class="text-center fw-bold">Recommended Crops</h5>
+         <div 
+         id="recommended-crop-container"
+         class="d-flex justify-content-center align-items-center gap-2 flex-wrap">
+          </div>
+     </div>
+     <%- include("partials/soil-data-card") %>
+     <%- include("partials/footer") %>
 </body>
-<script src="/scripts/myscript.js"></script>
 </html>
