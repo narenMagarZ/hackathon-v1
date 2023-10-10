@@ -2,11 +2,13 @@ import { appError, generateJwt, hash } from "../utils/index.js"
 import joi from 'joi'
 import UserService from '../services/user-service.js'
 async function signup(req,res,next){
+     console.log(req.body)
      const {error,value}=joi.object({
           firstName:joi.string().required(),
           lastName:joi.string().required(),
           email:joi.string(),
           password:joi.string().required(),
+          confirmPassword:joi.ref('password'),
           phoneNumber:joi.string().required(),
           province:joi.string()
           .allow("Karnali","Gandaki","Koshi","Bagmati","Sudurpashchim","Lumbini")
@@ -17,6 +19,7 @@ async function signup(req,res,next){
      }
      try{
           const hashedPassword = await hash(value.password)
+          const {confirmPassword:undefined,...newUserInfo} = value
           const newUser = await new UserService().createUser({
                ...value,
                password:hashedPassword
@@ -26,7 +29,8 @@ async function signup(req,res,next){
           }
           res.cookie('token',generateJwt(user),{
                maxAge:6.048e+8,
-               httpOnly:true
+               httpOnly:true,
+               signed:true
           })
           return res.status(200).json({
                status:"success",

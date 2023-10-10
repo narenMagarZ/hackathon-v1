@@ -19,7 +19,11 @@ async function signin(req,res,next){
           if(isPasswordMatched){
                res.cookie("token",generateJwt({
                     id:user.id
-               }))
+               }),{
+                    maxAge:6.048e+8,
+                    httpOnly:true,
+                    signed:true
+               })
                return res.status(200).json({
                     status:"success",
                     message:"Signin successfully"
