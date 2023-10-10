@@ -12,7 +12,6 @@ async function getSoilData(req,res,next){
      try{
           const {lat,lng}=value
           const response = await axios.get(`https://soil.narc.gov.np/soil/api/soildata?lat=${lat}&lon=${lng}`)
-          console.log(response.data)
           const soilData = response.data
           let climate = await getClimate(lat,lng)
           const weather = getWeatherFromCode(climate.weathercode)
