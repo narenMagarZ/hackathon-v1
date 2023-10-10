@@ -2,7 +2,7 @@
 import mongoose from "mongoose";
 
 
-const yieldCropsSchema = mongoose.Schema({
+const yieldCropsSchema = new mongoose.Schema({
      name:{
           type:String,
           required:true
