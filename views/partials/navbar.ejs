@@ -1,17 +1,25 @@
 <header>
     <div class="navbar">
-        <ul class="links">
-            <li><a href="#logo"><img class="logo" src="../images/logo.png" alt=""></a></li>
-            <li>
-                <input type="text" id="search_bar" placeholder="Enter District Name">
-                <a href="#"><img class="search-icon" src="http://www.endlessicons.com/wp-content/uploads/2012/12/search-icon.png"></a>
-            </li>
+        <div class="links">
+            <a class="" href="/">
+                    <img class="logo" src="../images/logo.png" alt="">
+            </a>
+            <div class=" rounded p-1  d-flex align-items-center" style="width:400px">
+                <button 
+                id="search-btn"
+                class="bg-transparent border-0 px-2 d-flex align-items-center justify-content-center">
+                    <i class="bi bi-search"></i>
+                </button>
+                <input type="text"
+                style="width: 400px;opacity: 0.7;"
+                class="border-0 search_bar px-2 py-1 bg-white rounded" id="search_bar" placeholder="Enter district name">
+            </div>
             <div class="suggestions" id="suggestionList"></div>
            <div class="corner">
             <li><a href="#notification" id="toggleButton"><i class="bi bi-bell"></i></a></li>
             <li><a href="/profile"><i class="bi bi-person"></i></a></li>
            </div> 
-        </ul>
+        </div>
     </div>
 </header>
 <div id="notification_panel" class="hidden">
@@ -20,3 +28,34 @@
         job today. Keep up the great work and don't forget to take a moment for
          yourself and savor the sweetness of life! </div>
 </div>
+<script>
+
+    const searchBtn = document.getElementById('search-btn')
+    const searchField = document.getElementById('search_bar')
+    if(searchBtn && searchField){
+        searchBtn.addEventListener('click',()=>{
+          const key = searchField.value
+        const coordinates = {
+          kathmandu: { latitude: 27.66401336166235, longitude: 85.30184671282768 },
+          lalitpur: { latitude: 27.644550767135147, longitude: 85.10409280657768 },
+          bhaktapur: { latitude: 27.508215721584662, longitude: 85.34579202532768 },
+          pokhara: { latitude: 28.207553303709737, longitude: 83.90758149325848 },
+          chitwan: { latitude: 27.741829073171214, longitude: 84.10533539950849},
+          surkhet: { latitude: 28.57481896943927, longitude: 81.62242524325849 }
+        };
+        fetch(`http://localhost:5000/api/soildata?lat=${coordinates[key].latitude}&lng=${coordinates[key].longitude}`).then(async res=>{
+          const data = await res.json()
+          const {suggestedCrops,climate,soilData} = data
+          const soilDataCard = document.getElementById('soil-data-card')
+          if(soilDataCard){
+            soilDataCard.innerHTML = ""
+            soilDataCard.append(climateInfo(climate))
+            soilDataCard.append(soilInfo(soilData))
+          
+          }
+        }).catch(err=>{
+          console.error(err)
+        })
+      })
+}
+</script>
