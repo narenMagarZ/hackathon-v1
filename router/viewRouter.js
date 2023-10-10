@@ -79,6 +79,10 @@ viewRouter.get('/yield/timeline',auth,async (req,res)=>{
 
 })
 
+viewRouter.get('/procedure',(req,res)=>{
+     const {crop} = req.query
+     return res.render("procedure.ejs",{crop})
+})
 
 const extractDate =(date)=>{
      const date1 = new Date(date)
