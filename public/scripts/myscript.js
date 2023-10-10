@@ -65,31 +65,44 @@ const words = [
     'Humla', 'Jumla', 'Kalikot', 'Mugu', 'Salyan', 'Surkhet', 'Western Rukum', 'Achham', 'Baitadi', 'Bajhang', 'Bajura'
   ];
 
-searchInput.addEventListener('input', function() {
-  const inputValue = this.value.toLowerCase();
-  suggestionList.innerHTML = '';
-  const filteredWords = words.filter(word => word.toLowerCase().startsWith(inputValue));
-
-  if (filteredWords.length > 0) {
-    suggestionList.style.display = 'block';
-    filteredWords.forEach(word => {
-      const li = document.createElement('li');
-      li.textContent = word;
-      suggestionList.appendChild(li);
-
-      li.addEventListener('click', function() {
-        searchInput.value = this.textContent;
-        suggestionList.style.display = 'none';
+  searchInput.addEventListener('input', function () {
+    const inputValue = this.value.toLowerCase();
+    suggestionList.innerHTML = '';
+    const filteredWords = words.filter(word => word.toLowerCase().startsWith(inputValue));
+  
+    if (filteredWords.length > 0) {
+      suggestionList.style.display = 'block';
+      filteredWords.forEach(word => {
+        const li = document.createElement('li');
+        li.textContent = word;
+        suggestionList.appendChild(li);
+  
+        li.addEventListener('click', function () {
+          searchInput.value = this.textContent;
+          suggestionList.style.display = 'none';
+        });
       });
-    });
-  } else if(filteredWords.length == 0)  {
+    } else if (filteredWords.length === 0) {
+      suggestionList.style.display = 'none';
+    }
+  });
+  
+  document.body.addEventListener('click', function (event) {
+    if (
+      event.target !== searchInput && 
+      event.target !== suggestionList 
+    ) {
+      suggestionList.style.display = 'none';
+    }
+  });
+  
+  searchInput.addEventListener('blur', function () {
+    suggestionList.style.display = 'none';
+  });
+  
+  if (searchInput !== document.activeElement) {
     suggestionList.style.display = 'none';
   }
-});
-
-if ( searchInput !== document.activeElement ){
-  suggestionList.style.display = 'none';
-}
 
 
 
