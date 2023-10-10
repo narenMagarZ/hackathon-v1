@@ -1,12 +1,14 @@
 import mongoose from "mongoose";
 
 
-const userSchema = mongoose.Schema({
+const userSchema = new mongoose.Schema({
      firstName:{
-          type:String
+          type:String,
+          required:true
      },
      lastName:{
-          type:String
+          type:String,
+          required:true
      },
      email:{
           type:String
@@ -17,6 +19,11 @@ const userSchema = mongoose.Schema({
           enum:["Karnali","Lumbini","Koshi","Madhesh","Gandaki","Sudurpashchim","Bagmati"]
      },
      phoneNumber:{
+          type:String,
+          required:true,
+          unique:true
+     },
+     password:{
           type:String,
           required:true
      },
